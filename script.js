@@ -1,4 +1,5 @@
 const DEFAULT_SIZE = 16;
+const DEFAULT_CELL_COLOR = 'black';
 
 function createGrid(size) {
     let container = document.querySelector('#container');
@@ -12,7 +13,7 @@ function createGrid(size) {
 
         // Change cell to black when hovered over
         div.addEventListener('mouseover', () => {
-            div.style.backgroundColor = 'black';
+            div.style.backgroundColor = DEFAULT_CELL_COLOR;
         });
 
         container.appendChild(div);
@@ -28,12 +29,11 @@ function clearGrid() {
 let size = DEFAULT_SIZE;
 createGrid(size);
 
-// Set up event listener for button
-let btn = document.querySelector('button');
-
-
-btn.addEventListener('mousedown', () => {
-    size = prompt("Enter a new number of rows and cols");
+// Set up event listener for slider
+let slider = document.querySelector('#slider');
+slider.addEventListener('change', () => {
+    let sliderText = document.querySelector('#slider-value');
+    sliderText.textContent = slider.value;
     clearGrid();
-    createGrid(size);
+    createGrid(slider.value);
 });

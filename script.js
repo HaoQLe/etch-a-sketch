@@ -4,6 +4,11 @@ function createGrid() {
     for (let i = 0; i < (16 * 16); i++) {
         let div = document.createElement("div");
         div.classList.add('cell');
+
+        div.addEventListener('mouseover', () => {
+            div.style.backgroundColor = 'black';
+        });
+
         container.appendChild(div);
     }
 }

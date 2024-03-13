@@ -1,5 +1,10 @@
 const DEFAULT_SIZE = 16;
-const DEFAULT_CELL_COLOR = 'black';
+const DEFAULT_COLOR = 'black';
+const DEFAULT_MODE = 'color';
+
+let currentSize = DEFAULT_SIZE;
+let currentColor = DEFAULT_COLOR;
+let currentMode = DEFAULT_MODE;
 
 function createGrid(size) {
     let container = document.querySelector('#container');
@@ -13,7 +18,11 @@ function createGrid(size) {
 
         // Change cell to black when hovered over
         div.addEventListener('mouseover', () => {
-            div.style.backgroundColor = DEFAULT_CELL_COLOR;
+            if (currentMode === 'color') {
+                div.style.backgroundColor = currentColor;
+            } else if (currentMode === 'erase') {
+                div.style.backgroundColor = 'white';
+            }
         });
 
         container.appendChild(div);

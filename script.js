@@ -29,7 +29,7 @@ function clearGrid() {
 let size = DEFAULT_SIZE;
 createGrid(size);
 
-// Set up event listener for slider
+// Handle event when slider value is changed
 let slider = document.querySelector('#slider');
 slider.addEventListener('change', () => {
     let sliderText = document.querySelector('#slider-value');
@@ -37,3 +37,10 @@ slider.addEventListener('change', () => {
     clearGrid();
     createGrid(slider.value);
 });
+
+// Handle event when clear button is clicked
+let clearBtn = document.getElementById('clearBtn');
+clearBtn.onclick = () => {
+    clearGrid();
+    createGrid(size);
+}

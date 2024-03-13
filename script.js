@@ -20,11 +20,8 @@ function createGrid(size) {
         div.addEventListener('mouseover', () => {
             if (currentMode === 'color') {
                 div.style.backgroundColor = currentColor;
-            } else if (currentMode === 'erase') {
-                div.style.backgroundColor = 'white';
             }
         });
-
         container.appendChild(div);
     }
 }
@@ -42,10 +39,11 @@ createGrid(size);
 let slider = document.querySelector('#slider');
 slider.addEventListener('change', () => {
     let sliderText = document.querySelector('#slider-value');
-    sliderText.textContent = slider.value;
-    clearGrid();
+    sliderText.textContent = slider.value + ' x ' + slider.value;
+    clearGrid(); 
     createGrid(slider.value);
 });
+
 
 // Handle event when clear button is clicked
 let clearBtn = document.getElementById('clearBtn');
@@ -53,3 +51,4 @@ clearBtn.onclick = () => {
     clearGrid();
     createGrid(size);
 }
+

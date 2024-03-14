@@ -102,8 +102,8 @@ function activateButton(newMode) {
 let slider = document.querySelector('#slider');
 slider.addEventListener('change', () => {
     updateSizeText(slider.value)
-    clearGrid(); 
-    createGrid(slider.value);
+    setSize(slider.value);
+    clearGrid();
 });
 
 // On startup

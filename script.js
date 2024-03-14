@@ -26,6 +26,17 @@ const colorBtn = document.getElementById('colorBtn');
 const eraserBtn = document.getElementById('eraserBtn');
 const clearBtn = document.getElementById('clearBtn');
 
+let sliderText = document.getElementById('slider-value');
+
+
+let mouseDown = false;
+document.body.onmousedown = () => (mouseDown = true);
+document.body.onmouseup = () => (mouseDown = false);
+
+function updateSizeText(size) {
+    sliderText.innerHTML = `{size} x {size}`;
+}
+
 function createGrid(size) {
     let container = document.querySelector('#container');
 
@@ -57,7 +68,6 @@ function clearGrid() {
 // Handle event when slider value is changed
 let slider = document.querySelector('#slider');
 slider.addEventListener('change', () => {
-    let sliderText = document.querySelector('#slider-value');
     sliderText.textContent = slider.value + ' x ' + slider.value;
     clearGrid(); 
     createGrid(slider.value);

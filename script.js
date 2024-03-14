@@ -26,8 +26,8 @@ const colorBtn = document.getElementById('colorBtn');
 const eraserBtn = document.getElementById('eraserBtn');
 const clearBtn = document.getElementById('clearBtn');
 
-
-
+colorBtn.onclick = () => setMode('color');
+eraserBtn.onclick = () => setMode('eraser');
 
 let sliderText = document.getElementById('slider-value');
 

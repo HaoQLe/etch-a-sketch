@@ -6,6 +6,18 @@ let currentSize = DEFAULT_SIZE;
 let currentColor = DEFAULT_COLOR;
 let currentMode = DEFAULT_MODE;
 
+function setSize(newSize) {
+    currentSize = newSize;
+}
+
+function setColor(newColor) {
+    currentColor = newColor;
+}
+
+function setMode(newMode) {
+    currentMode = newMode;
+}
+
 function createGrid(size) {
     let container = document.querySelector('#container');
 
@@ -31,9 +43,7 @@ function clearGrid() {
     container.innerHTML = "";
 }
 
-// Create initial grid
-let size = DEFAULT_SIZE;
-createGrid(size);
+
 
 // Handle event when slider value is changed
 let slider = document.querySelector('#slider');
@@ -51,4 +61,7 @@ clearBtn.onclick = () => {
     clearGrid();
     createGrid(size);
 }
+
+// Create initial grid
+createGrid(currentSize);
 

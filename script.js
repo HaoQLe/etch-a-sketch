@@ -18,6 +18,7 @@ function setColor(newColor) {
 }
 
 function setMode(newMode) {
+    activateButton(newMode);
     currentMode = newMode;
 }
 
@@ -27,7 +28,7 @@ const eraserBtn = document.getElementById('eraserBtn');
 const clearBtn = document.getElementById('clearBtn');
 
 colorBtn.onclick = () => setMode('color');
-eraserBtn.onclick = () => setMode('eraser');
+eraserBtn.onclick = () => setMode('erase');
 clearBtn.onclick = () => clearGrid();
 
 let sliderText = document.getElementById('slider-value');
@@ -69,8 +70,26 @@ function changeColor(event) {
 
     if (currentMode === 'color') {
         event.target.style.backgroundColor = currentColor;
-    } else if (currentMode === 'eraser') {
+    } else if (currentMode === 'erase') {
         event.target.style.backgroundColor = 'white';
+    }
+}
+
+function activateButton(newMode) {
+    if (currentMode === 'color') {
+        colorBtn.classList.remove('active');
+    } else if (currentMode === 'rainbow') {
+        colorBtn.classList.remove('active');
+    } else if (currentMode === 'erase') {
+        colorBtn.classList.remove('active');
+    }
+
+    if (newMode === 'color') {
+        colorBtn.classList.add('color');
+    } else if (newMode === 'rainbow') {
+        rainbowBtn.classList.add('rainbow');
+    } else if (newMode === 'erase') {
+        eraserBtn.classList.add('active');
     }
 }
 

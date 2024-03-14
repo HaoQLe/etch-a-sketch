@@ -1,11 +1,14 @@
+// Initialize immutables
 const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = 'black';
 const DEFAULT_MODE = 'color';
 
+// Initialize mutables
 let currentSize = DEFAULT_SIZE;
 let currentColor = DEFAULT_COLOR;
 let currentMode = DEFAULT_MODE;
 
+// Initialize setters
 function setSize(newSize) {
     currentSize = newSize;
 }
@@ -18,23 +21,29 @@ function setMode(newMode) {
     currentMode = newMode;
 }
 
+// Retrieve buttons
+const colorBtn = document.getElementById('colorBtn');
+const eraserBtn = document.getElementById('eraserBtn');
+const clearBtn = document.getElementById('clearBtn');
+
 function createGrid(size) {
     let container = document.querySelector('#container');
 
     for (let i = 0; i < (size * size); i++) {
         let div = document.createElement("div");
         div.classList.add('cell');
-
         div.style.width = (512 / size) + 'px';
         div.style.height = (512/ size) + 'px';
 
-        // Change cell to black when hovered over
-        div.addEventListener('mouseover', () => {
-            if (currentMode === 'color') {
-                div.style.backgroundColor = currentColor;
-            }
-        });
+        div.addEventListener('mouseover', changeColor);
+        div.addEventListener('mousedown', changeColor);
         container.appendChild(div);
+    }
+}
+
+function changeColor(event) {
+    if (event.type === 'mouseover' && !mouseDown) {
+
     }
 }
 
@@ -56,7 +65,6 @@ slider.addEventListener('change', () => {
 
 
 // Handle event when clear button is clicked
-let clearBtn = document.getElementById('clearBtn');
 clearBtn.onclick = () => {
     clearGrid();
     createGrid(size);

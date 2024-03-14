@@ -28,6 +28,7 @@ const clearBtn = document.getElementById('clearBtn');
 
 colorBtn.onclick = () => setMode('color');
 eraserBtn.onclick = () => setMode('eraser');
+clearBtn.onclick = () => clearGrid();
 
 let sliderText = document.getElementById('slider-value');
 
@@ -55,6 +56,12 @@ function createGrid(size) {
     }
 }
 
+function clearGrid() {
+    let container = document.querySelector('#container');
+    container.innerHTML = "";
+    createGrid(currentSize);
+}
+
 function changeColor(event) {
     if (event.type === 'mouseover' && !mouseDown) {
         return;
@@ -67,13 +74,6 @@ function changeColor(event) {
     }
 }
 
-function clearGrid() {
-    let container = document.querySelector('#container');
-    container.innerHTML = "";
-}
-
-
-
 // Handle event when slider value is changed
 let slider = document.querySelector('#slider');
 slider.addEventListener('change', () => {
@@ -81,14 +81,6 @@ slider.addEventListener('change', () => {
     clearGrid(); 
     createGrid(slider.value);
 });
-
-
-// Handle event when clear button is clicked
-clearBtn.onclick = () => {
-    clearGrid();
-    createGrid(size);
-}
-
 
 // On startup
 window.onload = () => {

@@ -29,12 +29,12 @@ const clearBtn = document.getElementById('clearBtn');
 let sliderText = document.getElementById('slider-value');
 
 
-let mouseDown = false;
+let mouseDown = false
 document.body.onmousedown = () => (mouseDown = true);
 document.body.onmouseup = () => (mouseDown = false);
 
 function updateSizeText(size) {
-    sliderText.innerHTML = `{size} x {size}`;
+    sliderText.innerHTML = `${size} x ${size}`;
 }
 
 function createGrid(size) {
@@ -68,7 +68,7 @@ function clearGrid() {
 // Handle event when slider value is changed
 let slider = document.querySelector('#slider');
 slider.addEventListener('change', () => {
-    sliderText.textContent = slider.value + ' x ' + slider.value;
+    updateSizeText(slider.value)
     clearGrid(); 
     createGrid(slider.value);
 });

@@ -62,6 +62,8 @@ clearBtn.onclick = () => {
     createGrid(size);
 }
 
-// Create initial grid
-createGrid(currentSize);
 
+// On startup
+window.onload = () => {
+    createGrid(currentSize); // Create initial grid
+}

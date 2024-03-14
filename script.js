@@ -70,6 +70,11 @@ function changeColor(event) {
 
     if (currentMode === 'color') {
         event.target.style.backgroundColor = currentColor;
+    } else if (currentMode === "rainbow") {
+        const randomR = Math.floor(Math.random() * 256)
+        const randomG = Math.floor(Math.random() * 256)
+        const randomB = Math.floor(Math.random() * 256)
+        event.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
     } else if (currentMode === 'erase') {
         event.target.style.backgroundColor = 'white';
     }

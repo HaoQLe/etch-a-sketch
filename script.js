@@ -18,8 +18,8 @@ function setColor(newColor) {
 }
 
 function setMode(newMode) {
-    activateButton(newMode);
     currentMode = newMode;
+    activateButton(newMode);
 }
 
 // Retrieve buttons
@@ -79,15 +79,15 @@ function activateButton(newMode) {
     if (currentMode === 'color') {
         colorBtn.classList.remove('active');
     } else if (currentMode === 'rainbow') {
-        colorBtn.classList.remove('active');
+        rainbowBtn.classList.remove('active');
     } else if (currentMode === 'erase') {
-        colorBtn.classList.remove('active');
+        eraserBtn.classList.remove('active');
     }
 
     if (newMode === 'color') {
-        colorBtn.classList.add('color');
+        colorBtn.classList.add('active');
     } else if (newMode === 'rainbow') {
-        rainbowBtn.classList.add('rainbow');
+        rainbowBtn.classList.add('active');
     } else if (newMode === 'erase') {
         eraserBtn.classList.add('active');
     }
@@ -104,4 +104,5 @@ slider.addEventListener('change', () => {
 // On startup
 window.onload = () => {
     createGrid(currentSize); // Create initial grid
+    setMode('color')
 }

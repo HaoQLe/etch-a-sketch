@@ -26,6 +26,9 @@ const colorBtn = document.getElementById('colorBtn');
 const eraserBtn = document.getElementById('eraserBtn');
 const clearBtn = document.getElementById('clearBtn');
 
+
+
+
 let sliderText = document.getElementById('slider-value');
 
 
@@ -54,7 +57,13 @@ function createGrid(size) {
 
 function changeColor(event) {
     if (event.type === 'mouseover' && !mouseDown) {
+        return;
+    }
 
+    if (currentMode === 'color') {
+        event.target.style.backgroundColor = currentColor;
+    } else if (currentMode === 'eraser') {
+        event.target.style.backgroundColor = 'white';
     }
 }
 

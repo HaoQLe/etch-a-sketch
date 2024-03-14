@@ -18,20 +18,23 @@ function setColor(newColor) {
 }
 
 function setMode(newMode) {
-    currentMode = newMode;
     activateButton(newMode);
+    currentMode = newMode;
 }
 
 // Retrieve buttons
 const colorBtn = document.getElementById('colorBtn');
+const rainbowBtn = document.getElementById('rainbowBtn')
 const eraserBtn = document.getElementById('eraserBtn');
 const clearBtn = document.getElementById('clearBtn');
 
 colorBtn.onclick = () => setMode('color');
+rainbowBtn.onclick = () => setMode('rainbow');
 eraserBtn.onclick = () => setMode('erase');
 clearBtn.onclick = () => clearGrid();
 
 let sliderText = document.getElementById('slider-value');
+let container = document.getElementById('container');
 
 
 let mouseDown = false
@@ -43,8 +46,6 @@ function updateSizeText(size) {
 }
 
 function createGrid(size) {
-    let container = document.querySelector('#container');
-
     for (let i = 0; i < (size * size); i++) {
         let div = document.createElement("div");
         div.classList.add('cell');
@@ -58,7 +59,6 @@ function createGrid(size) {
 }
 
 function clearGrid() {
-    let container = document.querySelector('#container');
     container.innerHTML = "";
     createGrid(currentSize);
 }
